@@ -1,0 +1,159 @@
+---
+sidebar: sidebar 
+permalink: trident-use/anf.html 
+keywords: trident backend, azure netapp files, smb volumes, smb, windows, drivers, access modes, rwo, rwx, rwp, rwop, file system, aks, managed identities, azure 
+summary: '您可以將 Azure NetApp Files 設定為 Trident 的後端。您可以使用 Azure NetApp Files 後端附加 NFS 和 SMB 磁碟區。Trident 也支援使用託管識別碼對 Azure Kubernetes Services (AKS) 叢集進行憑證管理。' 
+---
+= 配置 Azure NetApp Files 後端
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以將 Azure NetApp Files 設定為 Trident 的後端。您可以使用 Azure NetApp Files 後端附加 NFS 和 SMB 磁碟區。Trident 也支援使用託管識別碼對 Azure Kubernetes Services (AKS) 叢集進行憑證管理。
+
+
+
+== Azure NetApp Files 驅動程式詳細資料
+
+Trident 提供以下 Azure NetApp Files 儲存驅動程式以與叢集通訊。支援的存取模式有：_ReadWriteOnce_ (RWO)、_ReadOnlyMany_ (ROX)、_ReadWriteMany_ (RWX)、_ReadWriteOncePod_ (RWOP)。
+
+[cols="2, 1, 1, 2, 2"]
+|===
+| 驅動程式 | 傳輸協定 | volumeMode | 支援的存取模式 | 支援的檔案系統 
+
+
+| `azure-netapp-files`  a| 
+NFS SMB
+ a| 
+檔案系統
+ a| 
+RWO 、 ROX 、 RWX 、 RWOP
+ a| 
+`nfs`, `smb`
+
+|===
+
+
+=== 考量事項
+
+* Azure NetApp Files 服務不支援小於 50 GiB 的磁碟區。如果請求的磁碟區較小，Trident 會自動建立 50 GiB 的磁碟區。
+* Trident 僅支援掛載到在 Windows 節點上執行的 Pod 的 SMB 磁碟區。
+
+
+
+
+== AKS 的受管理身分識別
+
+Trident 支援 link:https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["託管身分識別"^] Azure Kubernetes Services 叢集。若要利用託管識別碼提供的簡化憑證管理功能，您必須具備以下條件：
+
+* 使用 AKS 部署的 Kubernetes 叢集
+* 在 AKS Kubernetes 叢集上設定的託管身分
+* 已安裝的 Trident 包括 `cloudProvider`以指定 `"Azure"`。
++
+[role="tabbed-block"]
+====
+.Trident 操作程式
+--
+若要使用 Trident 運算子安裝 Trident，請編輯 `tridentorchestrator_cr.yaml`以將 `cloudProvider`設定為 `"Azure"`。例如：
+
+[source, yaml]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  cloudProvider: "Azure"
+----
+--
+.Helm
+--
+以下範例會使用環境變數 `$CP`將 Trident sets `cloudProvider`安裝到 Azure：
+
+[listing]
+----
+helm install trident trident-operator-100.2506.0.tgz --create-namespace --namespace <trident-namespace> --set cloudProvider=$CP
+----
+--
+.<code>tridentctl</code>
+--
+以下範例安裝 Trident 並將  `cloudProvider` 標誌設為  `Azure`：
+
+[listing]
+----
+tridentctl install --cloud-provider="Azure" -n trident
+----
+--
+====
+
+
+
+
+== AKS 的雲端身分
+
+雲端身分使 Kubernetes Pod 能夠透過作為工作負載身分進行驗證來存取 Azure 資源，而無需提供明確的 Azure 認證。
+
+若要在 Azure 中利用雲端身分功能，您必須具備以下條件：
+
+* 使用 AKS 部署的 Kubernetes 叢集
+* 在 AKS Kubernetes 叢集上設定 Workload identity 和 oidc-issuer
+* 已安裝的 Trident 包括 `cloudProvider`以指定 `"Azure"`和 `cloudIdentity`指定工作負載身分
++
+[role="tabbed-block"]
+====
+.Trident 操作程式
+--
+若要使用 Trident 操作員安裝 Trident，請編輯 `tridentorchestrator_cr.yaml`以將 `cloudProvider`設定為 `"Azure"`，並將 `cloudIdentity`設定為 `azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx`。
+
+例如：
+
+[source, yaml]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  cloudProvider: "Azure"
+  cloudIdentity: 'azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' # Edit
+----
+--
+.Helm
+--
+使用下列環境變數設定 *cloud-provider （ CP ）* 和 *cloud-identity （ CI ）* 標誌的值：
+
+`export CP="Azure"`
+`export CI="'azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'"`
+
+以下範例會安裝 Trident，並使用環境變數 `cloudProvider`將 `$CP`設為 Azure，同時使用環境變數 `cloudIdentity`設定 `$CI`：
+
+[listing]
+----
+helm install trident trident-operator-100.6.0.tgz --set cloudProvider=$CP --set cloudIdentity="$CI"
+----
+--
+.<code>tridentctl</code>
+--
+請使用以下環境變數設定 *cloud provider* 和 *cloud identity* 標誌的值：
+
+`export CP="Azure"`
+`export CI="azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"`
+
+以下範例安裝 Trident 並將  `cloud-provider` 標誌設為  `$CP`，並將  `cloud-identity` 設定為  `$CI`：
+
+[listing]
+----
+tridentctl install --cloud-provider=$CP --cloud-identity="$CI" -n trident
+----
+--
+====
+

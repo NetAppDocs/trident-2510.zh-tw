@@ -1,0 +1,102 @@
+---
+sidebar: sidebar 
+permalink: trident-use/gcnv.html 
+keywords: trident backend, google cloud netapp volumes, nfs volumes, nfs, drivers, access modes, rwo, rwx, rwp, rwop, file system, gke, cloud identity, google cloud 
+summary:  
+---
+= 配置 Google Cloud NetApp Volumes 後端
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+現在您可以將 Google Cloud NetApp Volumes 設定為 Trident 的後端。您可以使用 Google Cloud NetApp Volumes 後端附加 NFS 和 SMB 磁碟區。
+
+
+
+== Google Cloud NetApp Volumes 驅動程式詳情
+
+Trident 提供 `google-cloud-netapp-volumes`驅動程式來與叢集通訊。支援的存取模式包括：_ReadWriteOnce_ （RWO）、_ReadOnlyMany_ （ROX）、_ReadWriteMany_ （RWX）、_ReadWriteOncePod_ （RWOP）。
+
+[cols="2, 1, 1, 2, 2"]
+|===
+| 驅動程式 | 傳輸協定 | volumeMode | 支援的存取模式 | 支援的檔案系統 
+
+
+| `google-cloud-netapp-volumes`  a| 
+NFS SMB
+ a| 
+檔案系統
+ a| 
+RWO 、 ROX 、 RWX 、 RWOP
+ a| 
+`nfs`, `smb`
+
+|===
+
+
+== GKE 的雲端身分
+
+雲端身分可讓 Kubernetes Pod 透過以工作負載身分進行驗證來存取 Google Cloud 資源，而無需提供明確的 Google Cloud 認證。
+
+若要在 Google Cloud 中利用雲端身分功能，您必須具備以下條件：
+
+* 使用 GKE 部署的 Kubernetes 叢集。
+* 在 GKE 叢集上配置工作負載身分，並在節點池上配置 GKE MetaData Server。
+* 具有 Google Cloud NetApp Volumes 管理員（roles/netapp.admin）角色或自訂角色的 GCP 服務帳戶。
+* Trident 已安裝，其中包括 cloudProvider 指定「GCP」並 cloudIdentity 指定新的 GCP 服務帳戶。以下提供範例。
++
+[role="tabbed-block"]
+====
+.Trident 操作程式
+--
+若要使用 Trident 操作員安裝 Trident，請編輯 `tridentorchestrator_cr.yaml`以將 `cloudProvider`設定為 `"GCP"`，並將 `cloudIdentity`設定為 `iam.gke.io/gcp-service-account: \cloudvolumes-admin-sa@mygcpproject.iam.gserviceaccount.com`。
+
+例如：
+
+[source, yaml]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  cloudProvider: "GCP"
+  cloudIdentity: 'iam.gke.io/gcp-service-account: cloudvolumes-admin-sa@mygcpproject.iam.gserviceaccount.com'
+----
+--
+.Helm
+--
+使用下列環境變數設定 *cloud-provider （ CP ）* 和 *cloud-identity （ CI ）* 標誌的值：
+
+`export CP="GCP"`
+`export ANNOTATION="'iam.gke.io/gcp-service-account: \cloudvolumes-admin-sa@mygcpproject.iam.gserviceaccount.com'"`
+
+以下範例安裝 Trident 並使用環境變數 `$CP`將 `cloudProvider`設為 GCP，並使用環境變數 `$ANNOTATION`設置 `cloudIdentity`：
+
+[listing]
+----
+helm install trident trident-operator-100.6.0.tgz --set cloudProvider=$CP --set cloudIdentity="$ANNOTATION"
+----
+--
+.<code>tridentctl</code>
+--
+請使用以下環境變數設定 *cloud provider* 和 *cloud identity* 標誌的值：
+
+`export CP="GCP"`
+`export ANNOTATION="'iam.gke.io/gcp-service-account: \cloudvolumes-admin-sa@mygcpproject.iam.gserviceaccount.com'"`
+
+以下範例安裝 Trident 並將  `cloud-provider` 標誌設為  `$CP`，並將  `cloud-identity` 設定為  `$ANNOTATION`：
+
+[listing]
+----
+tridentctl install --cloud-provider=$CP --cloud-identity="$ANNOTATION" -n trident
+----
+--
+====
+

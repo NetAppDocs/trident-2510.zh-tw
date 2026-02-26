@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: known-issues.html 
+keywords: 'what"s new, new features, enhancements, known issues, resolved issues, troubleshooting' 
+summary: 以下是此版本的已知問題。 
+---
+= 已知問題
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+已知問題會識別可能妨礙您成功使用此產品版本的問題。
+
+以下已知問題會影響目前版本：
+
+
+
+== 還原大型檔案的 Restic 備份可能會失敗
+
+從使用 Restic 建立的 Amazon S3 備份中還原 30GB 或更大的檔案時,還原作業可能會失敗。作為因應措施,請使用 Kopia 作為資料移動工具來備份資料（Kopia 是備份的預設資料移動工具）。如需相關說明,請參閱 https://docs.netapp.com/us-en/trident/trident-protect/trident-protect-protect-apps.html["使用 Trident Protect 保護應用程式"^]。
