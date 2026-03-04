@@ -6085,4 +6085,5 @@
   <block id="e8ce47501426b8525633fc30daf17d7a" category="sidebar">自訂磁碟區名稱</block>
   <block id="f18a50f02f48551895d57b81dd288142" category="sidebar">跨命名空間共享 NFS 磁碟區</block>
   <block id="62486fa65fc31c383ace8989549632ad" category="sidebar">使用快照</block>
+  <block id="f45ace2e96672a5ca55ea6bac48b9865" category="admonition">##如果您的應用程式使用多個命名空間，且這些命名空間中存在同名的 PVC，則快照還原作業（無論是就地還原或還原到新命名空間）都將無法正常運作。所有還原的磁碟區將包含相同的資料，而不是每個命名空間對應的正確資料。請使用備份還原而不是快照還原，或升級到 26.02 或更高版本，該版本已修復此問題。##</block>
 </blocks>
