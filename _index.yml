@@ -1,13 +1,16 @@
 ---
 indexpage:
+  title: Trident 25.10 文件
+  summary: Trident 是一個開源的儲存配置和編排工具，由 NetApp 維護。它允許您為由 Docker 和 Kubernetes 管理的容器化應用程式建立儲存磁碟區。**請閱讀發行說明，以了解有關升級到
+    Trident 25.10 的重要資訊。**
+  keywords: trident, documentation, trident release notes, get started, deploy, upgrade,
+    use, trident protect, 2510, 25.10
   lead: Trident 是一個開源的儲存配置器和編排器，由 NetApp 維護。它使您能夠為由 Docker 和 Kubernetes 管理的容器化應用程式建立儲存磁碟區。
   tiles:
   - title: 版本資訊
     links:
     - title: 新增功能
       url: trident-rn.html
-    - title: 舊版
-      url: "/earlier-versions.html"
     - title: Trident 對 ASA r2 儲存系統的支援
       url: "/trident-asar2-support.html"
   - title: 開始使用
