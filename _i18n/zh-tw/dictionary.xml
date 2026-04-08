@@ -6063,6 +6063,7 @@
   <block id="43da129a49cd39591bce7ddda6f0dc82" category="list-text">使用 Trident Protect CLI 外掛程式驗證 AppVault CR 是否存在於目標叢集上：</block>
   <block id="ad00af2208d1570d2b6ca4c83cbbb61e" category="admonition">如果目標叢集上不存在 AppVault CR，請按照 <block ref="5f86f4618afc0bb72a8693bca73e9890" category="inline-link-macro-rx"></block> 中的步驟建立它。</block>
   <block id="b104127df6a8992a1e7bad2dbd1aad7c" category="list-text">查看目標叢集上可用 AppVault 的備份內容，並記下<block ref="bf8f430bcd54ced8b34c5fd6d4b41d3c" prefix=" " category="inline-code"></block>要還原的備份：</block>
-  <block id="3f170f167274ed66c26965c774034d2e" category="list-text">使用 AppVault 名稱和歸檔路徑將應用程式還原到目標叢集：注意：使用 CR 時，請確保用於應用程式還原的命名空間存在於目標叢集上。</block>
   <block id="5566fd919e0cd2daefbf9fbd55ec09e3" category="list-text">*spec.appArchivePath*：（_必填_）AppVault 內儲存備份內容的路徑。使用步驟 2 中的指令查看備份內容，並找到<block ref="bf8f430bcd54ced8b34c5fd6d4b41d3c" prefix=" " category="inline-code"></block>要還原的備份。</block>
+  <block id="053aba80de03f3fdf626d1c858342330" category="list-text">使用 AppVault 名稱和歸檔路徑將應用程式還原到目標叢集：</block>
+  <block id="a1d573518c6d239a09cfdd19537e0944" category="admonition">使用 CR 時，請確保用於應用程式還原的命名空間存在於目的地叢集上。</block>
 </blocks>
