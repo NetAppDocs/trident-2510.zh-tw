@@ -2323,13 +2323,8 @@
   <block id="2358fb4006fff416413cb9bfc04e4b73" category="list-text">請確保 AWS 工作階段權杖的有效期限足以應付任何長時間執行的還原作業。如果權杖在還原作業期間過期、作業可能會失敗。</block>
   <block id="df710f89ebb9e663bd3d66607a0bf413" category="inline-link">AWS 文件</block>
   <block id="f3aa7db516c38030a276a5895520407a" category="list-text">如需 AWS 資源憑證的詳細資訊，請參閱<block ref="968595e57d50a64e3fbe0f06bc16cb91" category="inline-link-rx"></block>。</block>
-  <block id="cfb3749b52f4ce0c21dcdc3a9fce80f2" category="list-text">使用 Trident Protect CLI 外掛程式檢查目標叢集上 AppVault CR 的可用性：</block>
-  <block id="1ff83a5266e9e025c2984e0c10dea90e" category="admonition">確保用於應用程式還原的命名空間存在於目的地叢集上。</block>
-  <block id="8d433ae9a21c49e9e5433ebd408605c0" category="list-text">從目的地叢集檢視可用 AppVault 的備份內容：</block>
   <block id="378e6f0ba7080535a4462b5311befb40" category="paragraph">執行此命令將顯示 AppVault 中的可用備份，包括其來源叢集、相應的應用程式名稱、時間戳記和歸檔路徑。</block>
   <block id="52b5830420efb96c3a91beb52bac3b23" category="paragraph">*範例輸出：*</block>
-  <block id="053aba80de03f3fdf626d1c858342330" category="list-text">使用 AppVault 名稱和歸檔路徑將應用程式還原到目標叢集：</block>
-  <block id="fceebbe32c1f7b24c54d6a4e8a0fa776" category="admonition">如果 BackupRestore CR 不可用，您可以使用步驟 2 中提到的指令來查看備份內容。</block>
   <block id="4ef55c1fec2de9218af40d16cbc021a4" category="list-text">使用以下命令恢復應用程式，並將方括號中的值替換為您環境中的資訊。命名空間映射參數使用冒號分隔的命名空間，將來源命名空間對應到正確的目標命名空間，格式為 source1:dest1,source2:dest2。例如：</block>
   <block id="db4c6bfd26488f4d6ab2ec6129b067d8" category="section-title">從快照還原到不同的命名空間</block>
   <block id="00a11b317e9c8f9d94e106859445f95b" category="paragraph">您可以使用自訂資源（CR）檔案從快照還原資料，還原到不同的命名空間或原始來源命名空間。當您使用 SnapshotRestore CR 將快照還原到不同的命名空間時，Trident Protect 會在新的命名空間中還原應用程式，並為還原的應用程式建立一個應用程式 CR。若要保護還原的應用程式，您可以建立隨需備份或快照，或建立保護排程。</block>
@@ -6062,4 +6057,12 @@
   <block id="6cb6457c77d43e645e6ad531fd87c3e7" category="admonition">若要從使用命名空間範圍運算子安裝的 Trident（版本 20.07 至 20.10）進行升級，請使用適用於您已安裝的 Trident 版本的升級說明。</block>
   <block id="c6e5aff4c5e70680da18857e52172127" category="list-text">如果您要從超出四版本視窗期的版本升級，請執行多步驟升級。使用您要升級的早期版本的升級說明，升級到符合四版本視窗期的最新版本。例如，如果您目前運行的是 23.07 版本，並且想要升級到 25.06 版本：</block>
   <block id="bdb3932167e7866c6c505613dc0f7cb7" category="paragraph">NetApp 不斷改進和增強其產品和服務。以下是 Trident 的一些最新功能。有關先前版本的信息，請參閱早期版本的文檔。</block>
+  <block id="23dc68eb3282da7f8baebc1f7c84fff9" category="inline-link">支援生命週期頁面</block>
+  <block id="df26dce8cff00211af89034cce0d1904" category="admonition">有關最新 Trident 版本支援計劃，請參閱<block ref="605c91b6d04b068d1f5e6199e80f3518" category="inline-link-rx"></block>。</block>
+  <block id="4daca3334f00c4ec7830e587d1e0269d" category="list-text">安裝 Trident Protect 需要 Helm 4.x 或更高版本。</block>
+  <block id="43da129a49cd39591bce7ddda6f0dc82" category="list-text">使用 Trident Protect CLI 外掛程式驗證 AppVault CR 是否存在於目標叢集上：</block>
+  <block id="ad00af2208d1570d2b6ca4c83cbbb61e" category="admonition">如果目標叢集上不存在 AppVault CR，請按照 <block ref="5f86f4618afc0bb72a8693bca73e9890" category="inline-link-macro-rx"></block> 中的步驟建立它。</block>
+  <block id="b104127df6a8992a1e7bad2dbd1aad7c" category="list-text">查看目標叢集上可用 AppVault 的備份內容，並記下<block ref="bf8f430bcd54ced8b34c5fd6d4b41d3c" prefix=" " category="inline-code"></block>要還原的備份：</block>
+  <block id="3f170f167274ed66c26965c774034d2e" category="list-text">使用 AppVault 名稱和歸檔路徑將應用程式還原到目標叢集：注意：使用 CR 時，請確保用於應用程式還原的命名空間存在於目標叢集上。</block>
+  <block id="5566fd919e0cd2daefbf9fbd55ec09e3" category="list-text">*spec.appArchivePath*：（_必填_）AppVault 內儲存備份內容的路徑。使用步驟 2 中的指令查看備份內容，並找到<block ref="bf8f430bcd54ced8b34c5fd6d4b41d3c" prefix=" " category="inline-code"></block>要還原的備份。</block>
 </blocks>
