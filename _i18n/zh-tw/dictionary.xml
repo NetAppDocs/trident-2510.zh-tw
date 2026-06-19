@@ -142,7 +142,6 @@
   <block id="804e1070c55dcfc75cbde5cbcb86c3ba" category="section-title">在 Kubernetes 叢集上安裝和使用 Trident</block>
   <block id="df316d84e969d52af02710ec31df7055" category="section-title">Trident 是否支援從私人登錄進行離線安裝？</block>
   <block id="5e05991e14fd9934a724121da40f5b98" category="inline-link-macro">了解 Trident 安裝</block>
-  <block id="d55b9ba8a4efff113044f9efe0557e0c" category="paragraph">是的，Trident 可以離線安裝。請參閱 <block ref="ed3eb8298d3a91b1400b1be26865f5ec" category="inline-link-macro-rx"></block>。</block>
   <block id="75ac7954ef399713139c894c431e4116" category="section-title">我可以遠端安裝 Trident 嗎？</block>
   <block id="cab0813b2ef0c2dc3e0c17505f73a2f2" category="paragraph">是的。Trident 18.10 及更高版本支援從任何<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block>有權存取叢集的機器進行遠端安裝。<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block>驗證存取權限後（例如，<block ref="1513e62b9eb7bbfc46c1be1a91a2ab76" prefix=" " category="inline-code"></block>從遠端機器啟動命令進行驗證），請按照安裝說明進行操作。</block>
   <block id="50434308d8b9fc89f708232cb5e9cf87" category="section-title">我可以使用 Trident 設定高可用性嗎？</block>
@@ -151,9 +150,7 @@
   <block id="685a0ffaaa9ec81b2c31846cbf192282" category="paragraph">Trident 從 Kubernetes API Server 讀取訊息，以確定應用程式何時要求新的 PVC，因此它需要存取 kube-system。</block>
   <block id="0df447334013f5ccae9c82a00df9508a" category="section-title">Trident 使用哪些角色和權限？</block>
   <block id="3c70f31b6cfd2fccfef3e715c4c4cabb" category="inline-link-macro">自訂 tridentctl 安裝</block>
-  <block id="3d939b5d63f5846e5d71053999d3972e" category="paragraph">Trident 安裝程式會建立一個 Kubernetes ClusterRole，該實例擁有對 Kubernetes 叢集的 PersistentVolume、PersistentVolumeClaim、StorageClass 和 Secret 資源的特定存取權。請參閱<block ref="ddc7df443077796093efdaf5a64d03cd" category="inline-link-macro-rx"></block>。</block>
   <block id="8b1b2eab4c453e6c69faf86b91b46898" category="section-title">我可以在本機產生 Trident 用於安裝的確切資訊清單檔案嗎？</block>
-  <block id="b633901fb93d2b4cb35254a9764dd626" category="paragraph">如有需要，您可以在本機產生和修改 Trident 安裝時使用的確切資訊清單檔案。請參閱 <block ref="ddc7df443077796093efdaf5a64d03cd" category="inline-link-macro-rx"></block>。</block>
   <block id="176cc68bd86878bb1bde4c3e72b4c315" category="section-title">我可以為兩個獨立的 Kubernetes 叢集中的兩個獨立的 Trident 執行個體共用同一個 ONTAP 後端 SVM 嗎？</block>
   <block id="14151311f8b442ecc7db1533868dccd9" category="paragraph">雖然不建議，但您可以為兩個 Trident 實例使用相同的後端 SVM。在安裝期間為每個實例指定唯一的磁碟區名稱，和／或在<block ref="641b2675465e765661450709e2351a8e" prefix=" " category="inline-code"></block>檔案中指定唯一的<block ref="57a3822fdb39e72cdc47d89fd04ce467" prefix=" " category="inline-code"></block>參數。這是為了確保同一個FlexVol volume 不會同時用於兩個實例。</block>
   <block id="55c5d3092c2cf2c38eb0a708eefb8486" category="section-title">是否可以在 ContainerLinux（以前稱為 CoreOS）下安裝 Trident？</block>
@@ -325,7 +322,6 @@
   <block id="eddc3ab7d283c02464f100ff837cf055" category="inline-link-macro">Trident 資源</block>
   <block id="01ba66c56fa9029a3ce0095f09b9b340" category="list-text"><block ref="01ba66c56fa9029a3ce0095f09b9b340" category="inline-link-macro-rx"></block></block>
   <block id="874d8a5301794a9ca2aba132ac2460f3" category="inline-link-macro">Kubernetes Hub</block>
-  <block id="8f4c1b75985ff2903107b7115115ea58" category="list-text"><block ref="8f4c1b75985ff2903107b7115115ea58" category="inline-link-macro-rx"></block></block>
   <block id="8b9ee3820f7179994c867a6cd7d1d378" category="summary">Trident 是一個開源的儲存配置和編排工具，由 NetApp 維護。它允許您為由 Docker 和 Kubernetes 管理的容器化應用程式建立儲存磁碟區。**請閱讀發行說明，以了解有關升級到 Trident 25.10 的重要資訊。**</block>
   <block id="3396bf6761709c7c8fca5d0fadc63d7e" category="doc">Trident 25.10 文件</block>
   <block id="0c2517d08c2a451f035c427a4dc895e1" category="summary">以下是此版本的已知問題。</block>
@@ -905,17 +901,14 @@
   <block id="253b40ae359ba25b56231803430c4873" category="section-title">ONTAP</block>
   <block id="54ad97548183fc7d802b6db88573701f" category="paragraph">ONTAP 是 NetApp 多協定統一儲存作業系統，可為任何應用程式提供進階資料管理功能。ONTAP 系統具有全快閃、混合或全 HDD 配置，並提供多種不同的部署模型，包括工程硬體（FAS 和 AFF）、白盒（ONTAP Select）和純雲端（Cloud Volumes ONTAP）。</block>
   <block id="cbb7697b4f6f189240d043ff70ca133c" category="admonition">Trident 支援上述所有 ONTAP 部署模型。</block>
-  <block id="5c04ffbd0c110bf7b37d6b95eb756b75" category="paragraph"><block ref="700b45b9fca207b66f675c8d5dfb073b" category="inline-link-rx"></block> 是一款僅限軟體的儲存設備，可在雲端中執行 ONTAP 資料管理軟體。您可以使用 Cloud Volumes ONTAP 處理生產工作負載、災難復原、DevOps、檔案共用和資料庫管理。它透過提供儲存效率、高可用性、資料複製、資料分層和應用程式一致性，將企業儲存擴展到雲端。</block>
   <block id="f8869dc9dbb397ea76e820ae99f70217" category="paragraph"><block ref="6a2736fcbb5755dd03d114a5153506eb" category="inline-link-rx"></block> 是一項完全託管的 AWS 服務，可讓您啟動並執行由 NetApp ONTAP 儲存作業系統驅動的檔案系統。FSx for ONTAP 讓您能夠利用您熟悉的 NetApp 特性、效能和管理功能，同時享受在 AWS 上儲存資料的簡易性、敏捷性、安全性和可擴充性。FSx for ONTAP 支援 ONTAP 檔案系統的許多特性和管理 API。</block>
   <block id="1fdf61a8f946268990d8e15dd9069a6d" category="paragraph"><block ref="eca39b018af81e7b5c8e71b5b4aa3790" category="inline-link-rx"></block> 使儲存管理員能夠整合工作負載，從而確保效能並簡化和最佳化儲存佈局。結合用於自動化儲存管理各方面的 API，Element 讓儲存管理員能夠事半功倍。</block>
   <block id="25f221cc63a7e1fa55b05c29420a72a2" category="paragraph"><block ref="2841e7defe3939e68d83d007d1ad666b" category="inline-link-rx"></block> 透過自動化日常任務，簡化資料中心的管理和擴展，使基礎設施管理員能夠專注於更重要的功能。</block>
   <block id="be17f8b9c728a6cb61cad5a2609b3888" category="paragraph">NetApp HCI 完全由 Trident 支援。Trident 可以直接針對底層 NetApp HCI 儲存平台，為容器化應用程式配置和管理儲存裝置。</block>
   <block id="29e7ab00082418141d470583a19c28d3" category="paragraph"><block ref="2384314bcd106c8062815b2ed789c4ad" category="inline-link-rx"></block> 是由 NetApp 提供支援的企業級 Azure 檔案共用服務。您可以在 Azure 中原生運作要求最嚴苛的基於檔案的工作負載，並獲得您期望從 NetApp 獲得的卓越效能和豐富的資料管理功能。</block>
-  <block id="0ce84605b24873b2ee81987302d60089" category="paragraph"><block ref="bc468e9b0072cb6f1552f9bc0a3b6063" category="inline-link-rx"></block> 是一項雲端原生檔案服務，可透過 NFS 提供全快閃效能的 NAS 磁碟區。此服務可讓包括舊版應用程式在內的任何工作負載在 GCP 雲端中執行。它提供完全託管的服務，可提供一致的高效能、即時複製、資料保護，以及對 Google Compute Engine （GCE） 執行個體的安全存取。</block>
   <block id="a60c2f57df655a9ac5fcaa0750886195" category="summary">如果您剛開始使用 Kubernetes，請使用安裝 Kubernetes 的說明進行試用。這些說明提供了一個基本的單節點叢集，Trident 可以與其整合以進行示範。</block>
   <block id="8c33c0d65f9f2a648eb30a9703072383" category="doc">Trident 快速入門</block>
   <block id="a555fee6c6587118e36d8dd135df1313" category="inline-link-macro">Trident 需求</block>
-  <block id="96a40ad4ad263d59437e326f22eaecdf" category="paragraph">您可以在幾個步驟內安裝 Trident 並開始管理儲存資源。開始之前，請先檢閱<block ref="d5fb7f9fba906801b000d5533dc030cf" category="inline-link-macro-rx"></block>。</block>
   <block id="f1bcf1c509e84f327a99d5510a722dec" category="inline-link-macro">Trident for Docker</block>
   <block id="5b5dc0344ff29ee1aeb0845b87692cf1" category="admonition">有關 Docker 的資訊，請參閱 <block ref="f7120b9f314af1c9d82deae8957b54f3" category="inline-link-macro-rx"></block>。</block>
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">一</block>
@@ -927,7 +920,6 @@
   <block id="8f571d58ed95211be01ea993de3fee3e" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> 安裝 Trident</block>
   <block id="9877a7ec0ff327ca21c8022d61c25f88" category="paragraph">Trident 提供多種安裝方法和模式，並針對各種環境和組織進行了最佳化。</block>
   <block id="b8b9eab8c1ed7b79387652490f5724ec" category="inline-link-macro">安裝 Trident</block>
-  <block id="d94be11e75caa4db23a136d9b4cca4d9" category="paragraph"><block ref="d94be11e75caa4db23a136d9b4cca4d9" category="inline-link-macro-rx"></block></block>
   <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">三</block>
   <block id="f3b066024fd8e2699d194d41d5e46a5d" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> 建立後端</block>
   <block id="2e5120dd8211c4057a742a03b68ffe1a" category="paragraph">後端定義了 Trident 與儲存系統之間的關係。它告訴 Trident 如何與該儲存系統通訊，以及 Trident 應該如何從中配置磁碟區。</block>
@@ -1174,12 +1166,9 @@
   <block id="4a60d2fff997f6f3d9f8c6079b571355" category="section-title">關於 Trident 25.10 的關鍵資訊</block>
   <block id="906e93a2060242b360786042d0f40c9f" category="section-title">使用 Helm 部署 Trident Operator 並安裝 Trident</block>
   <block id="7d3f46589c43a64fd040e4f0e0691a86" category="inline-link-macro">Helm Chart</block>
-  <block id="54cae3576f4c4ef43a60a75276a7afdb" category="paragraph">使用 Trident <block ref="30e4ebd32bc870aef019efda0672389c" category="inline-link-macro-rx"></block>，您可以在一個步驟中部署 Trident 操作員並安裝 Trident。</block>
   <block id="3342f1a2f74c6062a39d3076c35c5a5b" category="inline-link-macro">安裝概述</block>
-  <block id="6657de3ab3deaeef939684c50d5310e3" category="paragraph">檢查 <block ref="17128a3e349370ba21c9ca13ca0bc297" category="inline-link-macro-rx"></block> 以確保滿足安裝先決條件並為您的環境選擇了正確的安裝選項。</block>
   <block id="8f3958d59b8da100a4663b1cace112b7" category="inline-link-macro">部署先決條件</block>
   <block id="2e1b3f44683eee188be985693c4af5e1" category="inline-link-macro">Helm 版本 3</block>
-  <block id="64d2af40480a5cebf7e64939f6253bf3" category="paragraph">除了 <block ref="c7282b7e52e27c635b613335e59bf436" category="inline-link-macro-rx"></block> 之外，您還需要 <block ref="fc0cdbd8defe0c7175199dd05a0f8e76" category="inline-link-macro-rx"></block>。</block>
   <block id="4d204b33a367deb7dbcb20395c917da2" category="admonition">在私人儲存庫中安裝 Trident 時，如果您使用<block ref="990dc1a09e10c7b5378e6bc8a1956cb8" prefix=" " category="inline-code"></block>開關指定儲存庫位置，請勿在儲存庫路徑中使用<block ref="191065897cafafd6677dec7355a785d9" prefix=" " category="inline-code"></block>。</block>
   <block id="43eba64dcd06763432addbcf8db2d367" category="list-text">新增 Trident Helm 儲存庫：</block>
   <block id="b3735f022036728c24121c449da97183" category="inline-link-macro">Trident 與 CSI 影像</block>
@@ -1297,7 +1286,6 @@
   <block id="5305ee1fa605f73597adfacd52531aac" category="section-title">關於 Trident10 的關鍵資訊</block>
   <block id="8ff1bc8a7ac69f081f871e9e2a8c0d0f" category="section-title">手動部署 Trident 操作員並安裝 Trident</block>
   <block id="ea8cda06a0e70ad34c1b9ab1b7135105" category="inline-link-macro">支援的 Kubernetes 叢集</block>
-  <block id="bcc71769dd00af93bb067088094d9b0b" category="paragraph">登入 Linux 主機，並驗證它是否正在管理一個正常運作的 <block ref="ac355729d1ddc95a290738ca862fed08" category="inline-link-macro-rx"></block>，以及您是否擁有必要的權限。</block>
   <block id="e420b75ec3bc014e3f69c43b2383768b" category="admonition">使用 OpenShift 時，請在以下所有範例中使用<block ref="fb024832e51eb5f6da9113a745f1eb59" prefix=" " category="inline-code"></block>而非<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block>，並先執行<block ref="924132b4cedac6927feecff33e0a8e17" prefix=" " category="inline-code"></block>或<block ref="42c32f65d2d1c08a83fbc226da30a162" prefix=" " category="inline-code"></block>以 *system:admin* 身分登入。</block>
   <block id="92e83bca2bb40324de35154f8c95083d" category="list-text">驗證您的 Kubernetes 版本：</block>
   <block id="b17eef151a74252395aad7db4b148b57" category="list-text">驗證叢集管理員權限：</block>
@@ -1354,7 +1342,6 @@
   <block id="9be65bfc0904c8b8e06776335df88c52" category="summary">您可以手動部署 Trident Operator 來安裝 Trident。此程序適用於 Trident 所需的容器映像未儲存在私人登錄中的安裝情況。</block>
   <block id="5d8f25140dde9344f1318b1319929306" category="doc">手動部署 Trident 操作員（標準模式）</block>
   <block id="e09b85e9dd23a53724a460d162828e91" category="paragraph">您可以手動部署 Trident Operator 來安裝 Trident。此程序適用於 Trident 所需的容器映像未儲存在私人登錄中的安裝。如果您確實擁有私有映像登錄，請使用 <block ref="3fd9bb28718715a2d036f0ab9d9239b8" category="inline-link-macro-rx"></block>。</block>
-  <block id="953aeeea088f5f969f2eba121ae81f15" category="paragraph">在開始安裝之前，請登入 Linux 主機並驗證它是否正在管理運作中的 <block ref="ac355729d1ddc95a290738ca862fed08" category="inline-link-macro-rx"></block>，以及您是否擁有必要的權限。</block>
   <block id="ef2305a5dae85359e321280954448fc1" category="paragraph">建立<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Custom Resource Definition (CRD)。稍後您將建立<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> Custom Resource。請使用<block ref="91ff3926f7c7983bb4a56689f631e6c9" prefix=" " category="inline-code"></block>中對應的 CRD YAML 版本來建立<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> CRD。</block>
   <block id="7e1c8354fb2b2ecb65abfa6a63e08970" category="section-title">步驟 3：部署 Trident 操作人員</block>
   <block id="c35c65e4cd4cef23559781ed63709eb0" category="section-title">步驟 4：建立 <block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block> 並安裝 Trident</block>
@@ -1372,7 +1359,6 @@
   <block id="ca5380881d4e3b38f359d5d05acd6163" category="paragraph">您的安裝狀態應該類似這樣。</block>
   <block id="c5e8fc3926c956e64487a70aa036ec8c" category="paragraph">您可以使用 pod 建立狀態或<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>來驗證您的安裝。</block>
   <block id="5ba19178fb1b2111306714e923b35945" category="inline-link-macro">開啟偵錯模式</block>
-  <block id="43e7d51a6323aabe7af3d192e157f5ed" category="admonition">如果安裝程式未成功完成或<block ref="ce3abad3e11d6a43c5178e20a0c7d64b" prefix=" " category="inline-code"></block> <block ref="2903817a25b5de1e17a06122d71c5cf9" prefix="(" category="inline-code"></block>在 23.01 之前的版本中未顯示 *Running* 狀態，則表示平台未安裝。請使用<block ref="9b017020b9d48d433ec90c548e6b5c70" prefix=" " category="inline-code"></block>來<block ref="82f062b46969132d4baf9d002395a676" category="inline-link-macro-rx"></block>並排查問題。</block>
   <block id="d01f9020330072ac03affe8ff09d74c1" category="paragraph">以下範例提供使用<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝 Trident 的範例組態。</block>
   <block id="d5999fd61d148b96e54f154a54ffead5" category="example-title">Windows 節點</block>
   <block id="f19a63197b0bddc429409fc31e0f0028" category="paragraph">要讓 Trident 能夠在 Windows 節點上運作：</block>
@@ -1383,7 +1369,6 @@
   <block id="16f386086a2ad7537b5e373f9c0c2d25" category="summary">您可以使用 Trident 運算子（手動或使用 Helm）安裝 Trident，也可以使用<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝。本主題提供了選擇適合您的安裝流程的重要資訊。</block>
   <block id="3673a00b7dc94dd4c41d2410acd2fd30" category="paragraph">為了確保 Trident 能夠安裝在各種不同的環境和組織中，NetApp 提供了多種安裝選項。您可以使用 Trident Operator（手動或使用 Helm）或透過<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝 Trident。本主題提供了選擇適合您的安裝流程的重要資訊。</block>
   <block id="ef911ad0da9f5477ca7ec7af0ba4181a" category="paragraph">無論採用何種安裝路徑，您都必須具備：</block>
-  <block id="3f2851ece89063ca1615062ac2117a4e" category="list-text">對執行受支援 Kubernetes 版本且已啟用相關功能需求的受支援 Kubernetes 叢集擁有完整權限。詳情請查看 <block ref="3675fd04b78685cacd6e23511ab11d10" category="inline-link-macro-rx"></block>。</block>
   <block id="071d9becf308917b53d70c09e7da51b6" category="list-text">可存取受支援的 NetApp 儲存系統。</block>
   <block id="19eb712f406fc64109f96d9cf4055cb9" category="list-text">能夠從所有 Kubernetes 工作節點掛載磁碟區。</block>
   <block id="5f35b91e200cda68bf700d65b89c2c73" category="list-text">一台安裝了<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block>（或<block ref="fb024832e51eb5f6da9113a745f1eb59" prefix=" " category="inline-code"></block>，如果您正在使用 OpenShift）並配置用於管理您要使用的 Kubernetes 叢集的 Linux 主機。</block>
@@ -1392,13 +1377,10 @@
   <block id="c585967fa32d82c5e3c24bd63926c6a0" category="list-text">如果您正在將 Kubernetes 與 Docker Enterprise 一起使用，<block ref="57562caf1c76e1a261b7e2f8c3d113f9" category="inline-link-rx"></block></block>
   <block id="8ded34c5caad3971bb6d0a2b202d7b32" category="list-text">叢集必須支援特權工作負載。</block>
   <block id="4a052772dca278b7be31d54ca9f21831" category="inline-link-macro">基本概念</block>
-  <block id="a0c3ccd8e55dd8a4f5f5ad3a5269e331" category="admonition">如果您還沒有熟悉 <block ref="13aad4b6f98e790ff55e578921fa5ede" category="inline-link-macro-rx"></block>，現在正是了解的好時機。</block>
   <block id="a24b4ef46f44c1b54b99e62f49bef9af" category="section-title">選擇您的安裝方式</block>
   <block id="dcb987a2d08ee1a9198d1183b1a63a96" category="inline-link-macro">方法之間的轉換</block>
-  <block id="e11c9248bc5d43c6663f67955adbc53b" category="paragraph">選擇適合您的安裝方式。在做出決定之前，您還應該考慮 <block ref="e6ce874bf5f421a383109cc222a74763" category="inline-link-macro-rx"></block>。</block>
   <block id="bd1cc9ebdb33ed22a54815219f97af08" category="section-title">使用 Trident 運算子</block>
   <block id="b2ad529645b5bea51c4bcd516a5c5c8f" category="inline-link-macro">自訂您的 Trident 操作員部署</block>
-  <block id="4561600b99ad801aedaa0ed3d3f3d7dd" category="paragraph">無論手動部署或使用 Helm，Trident operator 都是簡化安裝和動態管理 Trident 資源的絕佳方式。您甚至可以<block ref="5290e5312b651716bedf8a83ec5a6467" category="inline-link-macro-rx"></block>使用<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block>自訂資源（CR）中的屬性。</block>
   <block id="9d2c1d92b0ecb606394b40e3553d07d2" category="paragraph">使用 Trident 運算子的優點包括：</block>
   <block id="4c4c1456097b6c9eca1c708465c381be" category="example-title">&lt;strong&gt;Trident 物件建立&lt;/strong&gt;</block>
   <block id="9bb09894435f05fa667865ab4c45ace7" category="paragraph">Trident 運算子會自動為您的 Kubernetes 版本建立下列物件。</block>
@@ -1654,7 +1636,6 @@
   <block id="3d40f2a5a694e68fd88105fc4f5ee0d4" category="section-title">Trident 操作員升級處理</block>
   <block id="74e51c48d68796e06830c062f5c955c1" category="inline-link-macro">使用 Trident 運算子的好處</block>
   <block id="99c73e527698ab76b32674b7e9dd4708" category="inline-link-macro">_滾動更新_</block>
-  <block id="6bd585eb6409f22b8a1e247f4935c581" category="paragraph">安裝和升級 Trident 的眾多<block ref="1294f86abdf2591159d9dd04918b1092" category="inline-link-macro-rx"></block>之一是能夠自動處理 Trident 和 Kubernetes 物件，而不會中斷現有掛載的磁碟區。這樣，Trident 可以支援零停機升級，或<block ref="c0fb6b6f12bb8ae805a97690328ec023" category="inline-link-macro-rx"></block>。具體來說，Trident Operator 與 Kubernetes 叢集通訊以：</block>
   <block id="1a1508da73374db3dd227799f48fdf63" category="list-text">刪除並重新建立 Trident Controller 部署和節點 DaemonSet。</block>
   <block id="88b9e59609789e4bf00d72c8be9dd376" category="list-text">將 Trident Controller Pod 和 Trident Node Pod 替換為新版本。</block>
   <block id="6d3156de6583a452ead75c70c186fcb8" category="list-text">如果某個節點沒有更新，並不妨礙其他節點的更新。</block>
@@ -1674,12 +1655,9 @@
   <block id="0efdc02c2d9fa1fcf31ff85fec4ed8de" category="summary">您可以使用操作員輕鬆升級現有的 Trident 安裝。</block>
   <block id="9a98985a342ee2d7d213394e90d838a9" category="doc">使用 Trident Operator 或 Helm 升級 Trident 安裝</block>
   <block id="d6b7a42c6c41b071d2c80b3e4c2a7edf" category="inline-link-macro">選擇升級方法</block>
-  <block id="5430a6b8f98712c8210f8df2d906793a" category="paragraph">您可以使用 Trident Operator 手動或透過 Helm 升級 Trident。您可以從一個 Trident Operator 安裝升級到另一個 Trident Operator 安裝，也可以從<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝升級到 Trident Operator 版本。在升級 Trident Operator 安裝之前，請先檢閱<block ref="5cffa5fbe758cc3901f0e33c78b29d1b" category="inline-link-macro-rx"></block>。</block>
   <block id="3ef75911ec16a9d0ba70cfd4e68dcb71" category="section-title">升級手動安裝</block>
   <block id="618fab30e005e12b783d70218c18af46" category="paragraph">您可以將叢集範圍的 Trident 操作員安裝升級到另一個叢集範圍的 Trident 操作員安裝。所有 Trident 版本都使用叢集範圍的操作員。</block>
   <block id="eb7a4fa3d9aff7ec5b23abb8b82d516b" category="paragraph">Trident 提供了一個捆綁文件，您可以使用該文件安裝 Operator 並為您的 Kubernetes 版本建立關聯物件。</block>
-  <block id="bd2cc8575fe69c7f775292759380c838" category="inline-link-macro">bundle_pre_1_25.yaml</block>
-  <block id="f27e6cf95381139bd9916c64f178d212" category="list-text">對於運行 Kubernetes 1.24 的集群，請使用 <block ref="ccef28639b5a7d8b851d32c1ca719ce3" category="inline-link-macro-rx"></block>。</block>
   <block id="5a02ebff4889c2de0379a0fb10bed282" category="inline-link-macro">bundle_post_1_25.yaml</block>
   <block id="b9f6abf28d1518cdaae0ed7e29a5727e" category="list-text">對於運行 Kubernetes 1.25 或更高版本的集群，請使用 <block ref="d1039b29d019902f70f499d65ede99cb" category="inline-link-macro-rx"></block>。</block>
   <block id="4e9ac50b8f51023570ef0b0a0a827912" category="inline-link-macro">支援的 Kubernetes 版本</block>
@@ -1697,14 +1675,12 @@
   <block id="5f5d62e54c7f1681b8aca17a51dae491" category="list-text">在安裝 Trident 的命名空間中對 Trident 版本執行預運行。這將列出要清理的資源。</block>
   <block id="db65493922bad76f3135ea26ab9b5377" category="list-text">使用 Helm 執行完整運行以進行清理。</block>
   <block id="cdfb4a820b1c2fb971221fb06e0dcd22" category="inline-link-macro">使用 Helm 安裝了 Trident</block>
-  <block id="d180bc23594b2a81a598da69af7136af" category="list-text">如果您<block ref="538f4beb16c8502421a8389e199d34ce" category="inline-link-macro-rx"></block>，可以使用<block ref="9ba27131bd1269499334744b89769fac" prefix=" " category="inline-code"></block>一步升級。如果您沒有新增 Helm 倉庫或無法使用它進行升級：</block>
   <block id="51c9e4ca2440cc879a0ac3211d74b056" category="list-text">從 <block ref="6a7c34d1e7545bd3ab5abc336e61eb7f" category="inline-link-macro-rx"></block> 下載最新版的 Trident。</block>
   <block id="196e168efbb56cd8b229b8c03e801ea3" category="list-text">使用 <block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> 命令，其中 <block ref="a9bf50a881c5d6e503f43683efad1e38" prefix=" " category="inline-code"></block> 反映您要升級到的版本。</block>
   <block id="34c5f2f84f16f23213713a6adc11c319" category="admonition">如果您在初始安裝期間設定了自訂選項（例如為 Trident 和 CSI 映像指定私有、鏡像註冊表），請在<block ref="cd01e1bae83933b9c59c914bc71332ac" prefix=" " category="inline-code"></block> 指令後附加<block ref="8b5806248570dbb13e7d3bc5e6c0ee37" prefix=" " category="inline-code"></block>，以確保這些選項包含在升級指令中，否則這些值將會重設為預設值。</block>
   <block id="3d0107bfa0874592e9dc04f9869b604b" category="list-text">運行 <block ref="cd4140d3de30b520500459331d08d2bf" prefix=" " category="inline-code"></block> 以驗證圖表和應用程式版本是否均已升級。運行 <block ref="3e725291d4b17065fdcd321172fcfae3" prefix=" " category="inline-code"></block> 以查看任何調試訊息。</block>
   <block id="613909529798c8a2543da8e954e5d742" category="section-title">從 <block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block> 安裝程式升級到 Trident operator</block>
   <block id="9142b40107d9c5a0b86ef0ce8c25a88b" category="paragraph">您可以從<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝升級到最新版本的 Trident 操作器。現有的後端和 PVC 將自動可用。</block>
-  <block id="733aa7fe5deef27d1cb0828cff0f17bd" category="admonition">在切換安裝方法之前，請先查看 <block ref="d7d87809bc6e1001ccd94c7433d28fd5" category="inline-link-macro-rx"></block>。</block>
   <block id="6a40bcc839c7c4e3dc8f6767cbe14743" category="list-text">下載最新的 Trident 版本。</block>
   <block id="4ab464bddccdcbc36fab4cea802025f9" category="list-text">根據清單檔案建立 <block ref="de2dc323226e711fbec4c5c39eeac5b8" prefix=" " category="inline-code"></block> CRD。</block>
   <block id="71530aef1814290453dc7add3bdae349" category="list-text">在相同命名空間中部署叢集範圍的 operator。</block>
@@ -1733,7 +1709,6 @@
   <block id="f83034df0569133b2bce8e38446dfa7d" category="list-text">如果有操作員 pod，請使用<block ref="9ce56b0c50ae80fe754522969b1c96b9" prefix=" " category="inline-code"></block>來判斷 Trident 是否使用 Helm 安裝。</block>
   <block id="dccfb2ce978b2c73d6a7308a124d0043" category="section-title">步驟 3：選擇升級方法</block>
   <block id="74652b96889938fdef1037f82abf39b0" category="inline-link-macro">在安裝方法之間移動</block>
-  <block id="831878da1887476c96f4d3663eb93345" category="paragraph">通常情況下，您應該使用與初始安裝相同的方法進行升級，但您也可以<block ref="e34c010032791417159012a5e31d7540" category="inline-link-macro-rx"></block>。有兩種升級 Trident 的選項。</block>
   <block id="441b9a0ce7113f17c0021f9922b1c865" category="inline-link-macro">使用 Trident 操作員進行升級</block>
   <block id="672218727121432fb7209f42c6a00514" category="list-text"><block ref="672218727121432fb7209f42c6a00514" category="inline-link-macro-rx"></block></block>
   <block id="14d76a1fc05dcace5308e48b3d9bad49" category="admonition">我們建議您在使用 operator 升級之前先檢閱<block ref="4185c20447fb5f0bb4f33698bfd20d27" category="inline-link-macro-rx"></block>。</block>
@@ -1743,10 +1718,8 @@
   <block id="2a21586f7990f8cb0f8951cd2ef7bc3b" category="doc">使用 tridentctl 進行升級</block>
   <block id="ffdcc81ea1b556d1898b6edeef92af9c" category="paragraph">您可以使用<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>輕鬆升級現有的 Trident 安裝。</block>
   <block id="f01c58ea1eebde50a8ce26c58daf4cce" category="paragraph">解除安裝並重新安裝 Trident 相當於一次升級。卸載 Trident 時，Trident 部署使用的持久卷聲明（PVC）和持久卷（PV）不會被刪除。已配置的 PV 在 Trident 離線期間仍可用，Trident 將在恢復在線後為在此期間創建的任何 PVC 配置卷。</block>
-  <block id="ab639a35db468f671d4a76735e801015" category="paragraph">在使用<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>進行升級之前，請先檢查<block ref="5cffa5fbe758cc3901f0e33c78b29d1b" category="inline-link-macro-rx"></block>。</block>
   <block id="7ad65028965606bad1c173b4f16cefeb" category="list-text">在<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>中執行卸載指令，以移除與 Trident 相關的所有資源，但 CRD 和相關物件除外。</block>
   <block id="3777d5420fb2ef4c5e434cd5af97d73d" category="inline-link-macro">使用 tridentctl 安裝 Trident</block>
-  <block id="23d4814be45e57b94df46ce2ee2a19f6" category="list-text">重新安裝 Trident 。請參閱 <block ref="6fa1b6e43e706a69762bd9a319950a21" category="inline-link-macro-rx"></block> 。</block>
   <block id="1d2d1200e759d67b259f843be2270f71" category="admonition">請勿中斷升級程序。確保安裝程式執行完成。</block>
   <block id="186ed0696d9f28961b696fce39a1ab04" category="summary">Trident Protect 讓您能夠使用 Trident 保護應用程式和應用程式資料。</block>
   <block id="a1fc1c89153021eb03a34941e90a9ac8" category="doc">了解 Trident Protect</block>
@@ -2726,7 +2699,6 @@
   <block id="1d17b5b3f5eac148844c892849fb56ee" category="list-text"><block ref="8c546380d19a34159a5f534f63ed1345" category="inline-link-macro-rx"></block>.</block>
   <block id="797abdcfd244820f24b3d4152205e999" category="list-text">如果叢集中尚未安裝 Operator Lifecycle Manager（OLM），請安裝它：<block ref="2517ba685c9750605ef002ea5ca0dd7c" prefix=" " category="inline-code"></block></block>
   <block id="c2517225f0cf11c14cfa8f15b56b4221" category="list-text">安裝 Node Health check Operator：<block ref="09b6bb475dc51286ca7e6eec20c4f77d" prefix=" " category="inline-code"></block>。</block>
-  <block id="0d554e4a64276c6bbaa2f252faef4d3a" category="admonition">您也可以使用以下<block ref="d3636ba06fda749510d82b74e497601f" category="inline-xref-macro-rx"></block>章節中指定的其他方法來偵測節點故障。</block>
   <block id="ebd17c61154ac668b32728307007008a" category="inline-link-macro">節點健康檢查 Operator</block>
   <block id="cc47bb57619fcdb7de5b495a2c701bf0" category="paragraph">如需詳細資訊，請參閱 <block ref="03167ed92cb924147e7b17a7c0b61981" category="inline-link-macro-rx"></block>。</block>
   <block id="2c4a935f02b64db18fe237d1902e292b" category="list-text">在 Trident 命名空間中建立一個 NodeHealthCheck (NHC) CR，用於監控叢集中的工作節點。範例：</block>
@@ -5432,7 +5404,6 @@
   <block id="9b85b10750f4b0e98b7853ee468d8bd5" category="list-text">SMB 磁碟區：</block>
   <block id="cf201a9e802aa6e35997590206919b1a" category="list-text">僅透過<block ref="8321592ce24c8a122ecf26a63cfca407" prefix=" " category="inline-code"></block>驅動程式支援 SMB 磁碟區。</block>
   <block id="6bb2a5c441a4e421f26e835928b68f1f" category="list-text">Trident EKS 外掛程式不支援 SMB 磁碟區。</block>
-  <block id="910bc8aad96dce304454db69330c4c1c" category="list-text">Trident 僅支援掛載到在 Windows 節點上執行的 Pod 的 SMB 磁碟區。如需詳細資訊，請參閱 <block ref="5d9770278862f1ca4af19e761a5fa655" category="inline-link-macro-rx"></block>。</block>
   <block id="3111c4c842496dcfcddb5de6e9f7ec11" category="list-text">在 Trident 24.02 之前，在啟用自動備份的 Amazon FSx 檔案系統上建立的磁碟區無法由 Trident 刪除。為了避免在 Trident 24.02 或更高版本中出現此問題，請在 AWS FSx for ONTAP 的後端組態檔中指定<block ref="d731d2fecb66f9c4a30253bd316a220f" prefix=" " category="inline-code"></block>、AWS<block ref="1e9c0fd1beef5ff8ed3bef2ae3b7e560" prefix=" " category="inline-code"></block>、AWS<block ref="9af4d8381781baccb0f915e554f8798d" prefix=" " category="inline-code"></block>和 AWS<block ref="ce656850400574e9f9cffb285ee8abc0" prefix=" " category="inline-code"></block>。</block>
   <block id="9f953e6f7a1bf75b24ad7c1f72aeda22" category="admonition">如果您要為 Trident 指定 IAM 角色，則可以省略明確指定 <block ref="1e9c0fd1beef5ff8ed3bef2ae3b7e560" prefix=" " category="inline-code"></block>、<block ref="c9ff119073ea2567730fb42e3a4fe805" prefix=" " category="inline-code"></block> 和 <block ref="ce656850400574e9f9cffb285ee8abc0" prefix=" " category="inline-code"></block> 欄位給 Trident。如需更多資訊，請參閱<block ref="d3e98810edf44af02b30486ed13bd043" category="inline-link-macro-rx"></block>。</block>
   <block id="6b37510d663e6eea4cd2d594f41e9e80" category="section-title">同時使用 Trident SAN/iSCSI 和 EBS-CSI 驅動程式</block>
@@ -5852,8 +5823,6 @@
   <block id="87a522ecb9df14bf978f6f1da8a654a8" category="list-text">您無法透過移除 <block ref="287f26e3328f9ac0f3f4da2cdaddd3e2" prefix=" " category="inline-code"></block> 或 <block ref="11650d25d20af47978d85fd6e19c89aa" prefix=" " category="inline-code"></block> 註解或刪除 <block ref="d6995f631b22fb3f8e94aad1b40d1280" prefix=" " category="inline-code"></block> CR 來撤銷對來源 PVC 的存取權限。若要撤銷存取權限，您必須刪除從屬 PVC。</block>
   <block id="3908892c437778f8b161a2ca006782cd" category="list-text">從屬磁碟區無法進行 Snapshot、複本和鏡射操作。</block>
   <block id="8ff961668c6784e84b25c265cbb629d7" category="paragraph">若要深入瞭解跨命名空間磁碟區存取：</block>
-  <block id="f1cfea5f1444de607dfa549b3aa57010" category="inline-link-macro">在命名空間之間共享磁碟區：迎接跨命名空間磁碟區存取</block>
-  <block id="2780f690b7670efc296ac19ef3029d0c" category="list-text">訪問 <block ref="b0d29f1b2abb2cc552e4cc47177582ef" category="inline-link-macro-rx"></block>。</block>
   <block id="96e1384807331548bf745acde0fe1b73" category="inline-link-macro">NetAppTV</block>
   <block id="5ff83dbc70e496ea22b38ea61bb69f05" category="list-text">觀看 <block ref="c27441bbbe62adf51ae6ecec41fde8bd" category="inline-link-macro-rx"></block> 上的示範影片。</block>
   <block id="821b0ad941ad2559ef18eb8de56a470e" category="summary">Kubernetes 叢集中的所有工作節點都需要能夠掛載您為 Pod 配置的磁碟區。如果您使用 ontap-nas、ontap-nas-economy、ontap-nas-flexgroup 驅動程式作為其中一個後端，則工作節點需要 NFS 工具。否則，它們需要 iSCSI 工具。</block>
@@ -5949,7 +5918,6 @@
   <block id="d356d628089d439d75e3f85564372658" category="list-text">使用 tridentctl 安裝</block>
   <block id="27e9bd9989c090489f69126b9910d7d8" category="list-text">您也可以在後端定義中包含<block ref="effa2d809c72dcb6cce15a1e0b040e63" prefix=" " category="inline-code"></block>，以取得每個後端的偵錯日誌。例如，包含<block ref="825a719baa5b5b7445c98535815fac39" prefix=" " category="inline-code"></block>，即可在 Trident 日誌中取得 API 呼叫和方法遍歷。現有的後端可以使用<block ref="effa2d809c72dcb6cce15a1e0b040e63" prefix=" " category="inline-code"></block>，並搭配<block ref="ad782b779edfd8199198bed41b3e3b6b" prefix=" " category="inline-code"></block>來設定。</block>
   <block id="3992b498f2510c20f4dc0df9804e6038" category="list-text">使用 Red Hat Enterprise Linux CoreOS (RHCOS) 時，請確保在工作節點上啟用<block ref="3fe4dc8de876aca2c78fa0cd9c6d0b65" prefix=" " category="inline-code"></block>並預設為啟動。這可以使用 OpenShift MachineConfigs 或透過修改 ignition 模板來實現。</block>
-  <block id="154244be43a4ba50080a256f5657b29a" category="list-text">使用 Trident 搭配<block ref="4568986ef6397d7c901269fc0e190ede" category="inline-link-rx"></block>時，您可能會遇到的常見問題是租用戶金鑰和客戶端金鑰來自權限不足的應用程式註冊。有關 Trident 要求的完整清單，請參閱<block ref="afedf4ee56554ea6e6b54e6aa206680c" category="inline-link-macro-rx"></block>組態。</block>
   <block id="7f0ecdfa510b31b01d331c2760643b83" category="list-text">如果將 PV 掛載到容器時出現問題，請確保已安裝並執行<block ref="7a31649dd02ecf0349542b72f9d5ef54" prefix=" " category="inline-code"></block>。請使用主機作業系統所需的套件管理員，並檢查<block ref="7a31649dd02ecf0349542b72f9d5ef54" prefix=" " category="inline-code"></block>是否正在執行。您可以透過執行<block ref="461bc51ac38341d1d2fdae2e84bc6e47" prefix=" " category="inline-code"></block>或其等效指令，來檢查<block ref="7a31649dd02ecf0349542b72f9d5ef54" prefix=" " category="inline-code"></block>服務的狀態。</block>
   <block id="78aeadc89feb4cf244398a7d35a0d656" category="list-text">如果 Trident 後端報告處於 <block ref="26934eb377001f66e37289a5c93fe284" prefix=" " category="inline-code"></block> 狀態，即使先前運作正常，也可能是因為變更了與後端關聯的 SVM/管理員憑證所致。使用 <block ref="defd1e55f93269ac9278afc086951ba8" prefix=" " category="inline-code"></block> 更新後端資訊或重新啟動 Trident pod 即可解決此問題。</block>
   <block id="b851cfc28cd6e5cb9aaf87bdb59a68aa" category="list-text">如果在使用 Docker 作為容器執行時安裝 Trident 時遇到權限問題，請嘗試使用<block ref="acbc9344b624715d4749280f7e4a5b49" prefix=" " category="inline-code"></block>旗標安裝 Trident。這將不使用安裝程式 Pod，並避免因<block ref="c84ef67352bb6783ff2881f9f2821c2a" prefix=" " category="inline-code"></block>使用者而導致的權限問題。</block>
@@ -6066,4 +6034,34 @@
   <block id="5566fd919e0cd2daefbf9fbd55ec09e3" category="list-text">*spec.appArchivePath*：（_必填_）AppVault 內儲存備份內容的路徑。使用步驟 2 中的指令查看備份內容，並找到<block ref="bf8f430bcd54ced8b34c5fd6d4b41d3c" prefix=" " category="inline-code"></block>要還原的備份。</block>
   <block id="053aba80de03f3fdf626d1c858342330" category="list-text">使用 AppVault 名稱和歸檔路徑將應用程式還原到目標叢集：</block>
   <block id="a1d573518c6d239a09cfdd19537e0944" category="admonition">使用 CR 時，請確保用於應用程式還原的命名空間存在於目的地叢集上。</block>
+  <block id="2a67362171e1d0d492a240f46aa40f9d" category="paragraph">是的，Trident 可以離線安裝。請參閱<block ref="13e08204659655d31384fe879b641070" category="inline-link-macro-rx"></block>。</block>
+  <block id="f7cfad1a7aa4eef27196fb6e10521019" category="paragraph">Trident 安裝程式會建立一個 Kubernetes ClusterRole，該實例擁有對 Kubernetes 叢集的 PersistentVolume、PersistentVolumeClaim、StorageClass 和 Secret 資源的特定存取權。請參閱<block ref="6993fa1aa5a98c9b8d5b482911a027b4" category="inline-link-macro-rx"></block>。</block>
+  <block id="5aa6b4fdc35400fce52390c7587041e5" category="paragraph">如有需要，您可以在本機產生和修改 Trident 安裝時使用的確切資訊清單檔案。請參閱<block ref="6993fa1aa5a98c9b8d5b482911a027b4" category="inline-link-macro-rx"></block>。</block>
+  <block id="bd36045805a85f9665960a0f6f9e955f" category="list-text"><block ref="bd36045805a85f9665960a0f6f9e955f" category="inline-link-macro-rx"></block></block>
+  <block id="714ad635b7b855ea6b214ed7b344a93a" category="paragraph">Cloud Volumes ONTAP 是一款純軟體儲存設備，可在雲端運作 ONTAP 資料管理軟體。您可以使用 Cloud Volumes ONTAP 處理生產工作負載、災難復原、DevOps、檔案共用和資料庫管理。它透過提供儲存效率、高可用性、資料複製、資料分層和應用程式一致性，將企業儲存擴展到雲端。</block>
+  <block id="6a76361978180e6579cdf8f094e90ab5" category="paragraph"><block ref="edd2b7aa1c7509676e2980018fef6c49" category="inline-link-rx"></block>是一項雲端原生檔案服務，可透過 NFS 提供全快閃高效能的 NAS 磁碟區。該服務支援包括傳統應用程式在內的任何工作負載在 GCP 雲端上運行。它提供完全託管的服務，可實現持續的高效能、即時複製、資料保護以及對 Google Compute Engine （GCE） 執行個體的安全存取。</block>
+  <block id="14ede6648ba5d3900803ea9064ea6f98" category="paragraph">您可以在幾個步驟內安裝 Trident 並開始管理儲存資源。開始之前，請先檢閱<block ref="6004af307fc2eed554c42ebaa4be8446" category="inline-link-macro-rx"></block>。</block>
+  <block id="365f044223bbae18d908189b4742ff4c" category="paragraph"><block ref="365f044223bbae18d908189b4742ff4c" category="inline-link-macro-rx"></block></block>
+  <block id="dde53589c85fa1215e4a3d3c3a0d6508" category="paragraph">檢查 <block ref="90e03a843b5d1f923d0ef6b32fbf11b0" category="inline-link-macro-rx"></block> 以確保滿足安裝先決條件並為您的環境選擇了正確的安裝選項。</block>
+  <block id="432cd8287366758f4223f1c5245523ef" category="paragraph">除了 <block ref="cb461850825fa08fd17f7c70933db3ad" category="inline-link-macro-rx"></block> 之外，您還需要 <block ref="fc0cdbd8defe0c7175199dd05a0f8e76" category="inline-link-macro-rx"></block>。</block>
+  <block id="e9d36c266026dc04d43783120d0a2d1d" category="paragraph">登入 Linux 主機，並驗證它是否正在管理一個正常運作的 <block ref="958ebeab180637e89445160bac2d22e7" category="inline-link-macro-rx"></block>，以及您是否擁有必要的權限。</block>
+  <block id="6e0142dfd4a5236fbce5c22e4e30fc2b" category="paragraph">在開始安裝之前，請登入 Linux 主機並驗證它是否正在管理運作中的 <block ref="958ebeab180637e89445160bac2d22e7" category="inline-link-macro-rx"></block>，以及您是否擁有必要的權限。</block>
+  <block id="d88223d773f28ccdf21626fa17114e63" category="admonition">如果安裝程式未成功完成或<block ref="ce3abad3e11d6a43c5178e20a0c7d64b" prefix=" " category="inline-code"></block> <block ref="2903817a25b5de1e17a06122d71c5cf9" prefix="(" category="inline-code"></block>在 23.01 之前的版本中未顯示 *Running* 狀態，則表示平台未安裝。請使用<block ref="9b017020b9d48d433ec90c548e6b5c70" prefix=" " category="inline-code"></block>來<block ref="0c26927b9a8e07f011a7bc7653213d74" category="inline-link-macro-rx"></block>並排查問題。</block>
+  <block id="799c345f132bca7bd3f7831646af862a" category="list-text">對執行受支援 Kubernetes 版本且已啟用相關功能需求的受支援 Kubernetes 叢集擁有完整權限。詳情請查看 <block ref="6fc1811f5f9a8ae54793544600e2dff7" category="inline-link-macro-rx"></block>。</block>
+  <block id="ddc804456e223eff8456798dc590ef65" category="admonition">如果您還沒有熟悉 <block ref="ccab18d1a43947a3cd56552efe5cb44e" category="inline-link-macro-rx"></block>，現在正是了解的好時機。</block>
+  <block id="52c58f553a5ef6874859d0bf137653fc" category="paragraph">選擇適合您的安裝方式。在做出決定之前，您還應該考慮 <block ref="8566ad2be80f530306673ceb0a701406" category="inline-link-macro-rx"></block>。</block>
+  <block id="3414d76eecba8d4a7dd3caeee51a228e" category="paragraph">無論手動部署或使用 Helm，Trident operator 都是簡化安裝和動態管理 Trident 資源的絕佳方式。您甚至可以<block ref="68a5e6b16e315077f5a728df34950477" category="inline-link-macro-rx"></block>使用<block ref="ae61bf6af1a7406b62c72a4bef1ab62d" prefix=" " category="inline-code"></block>自訂資源（CR）中的屬性。</block>
+  <block id="778f8fc1f45a4176e0a6dc6c0c8048d8" category="paragraph">安裝和升級 Trident 的眾多<block ref="2b6c752c2a0adaf915d24df45e6dabc3" category="inline-link-macro-rx"></block>之一是能夠自動處理 Trident 和 Kubernetes 物件，而不會中斷現有掛載的磁碟區。這樣，Trident 可以支援零停機升級，或<block ref="c0fb6b6f12bb8ae805a97690328ec023" category="inline-link-macro-rx"></block>。具體來說，Trident Operator 與 Kubernetes 叢集通訊以：</block>
+  <block id="c4ca8360dfbe09e499694a13ac8fc34c" category="paragraph">您可以使用 Trident Operator 手動或透過 Helm 升級 Trident。您可以從一個 Trident Operator 安裝升級到另一個 Trident Operator 安裝，也可以從<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>安裝升級到 Trident Operator 版本。在升級 Trident Operator 安裝之前，請先檢閱<block ref="ad3ae3ba576f54a9ed86202bbeedc293" category="inline-link-macro-rx"></block>。</block>
+  <block id="c39b4b2690198076ba45bbb6e7eec555" category="list-text">如果您<block ref="4cb6ea02341de02a01b7d090723c78e1" category="inline-link-macro-rx"></block>，可以使用<block ref="9ba27131bd1269499334744b89769fac" prefix=" " category="inline-code"></block>一步升級。如果您沒有新增 Helm 倉庫或無法使用它進行升級：</block>
+  <block id="8edaa40191fd981b339b65738ae96ecc" category="admonition">在切換安裝方法之前，請先查看 <block ref="d9897dfd3f891279098b72584e2caa99" category="inline-link-macro-rx"></block>。</block>
+  <block id="a91a374e8f989d015a82975728b4b552" category="paragraph">通常情況下，您應該使用與初始安裝相同的方法進行升級，但您也可以<block ref="be81b6c3db35f66680ab7fc08ff1a8b2" category="inline-link-macro-rx"></block>。有兩種升級 Trident 的選項。</block>
+  <block id="7ba0dd834b932c7125765a293d38c4f6" category="paragraph">在使用<block ref="c67fd1b99934afa248dfeb285a9a4191" prefix=" " category="inline-code"></block>進行升級之前，請先檢查<block ref="ad3ae3ba576f54a9ed86202bbeedc293" category="inline-link-macro-rx"></block>。</block>
+  <block id="42f5a8a8d0da0554baf08f4dadadd8cc" category="list-text">重新安裝 Trident 。請參閱<block ref="64e580b28451084913f93b8afd1bcdce" category="inline-link-macro-rx"></block>。</block>
+  <block id="dd5714ad50e5cf2d788e239e1b8c6c6d" category="inline-link-macro">整合自訂節點健康檢查解決方案</block>
+  <block id="90b138b6a758a26dc3e5e4d1b09e0fa0" category="admonition">您也可以使用以下<block ref="1d8f3a05b03ef442fe310de66a552bf4" category="inline-link-macro-rx"></block>章節中指定的其他方法來偵測節點故障。</block>
+  <block id="34097d18bbaaadf5ab96f009ad9e612a" category="inline-link">初始組態後&lt;block ref="ea76b2438eb5996eb2c347e7341ed59a" prefix=" " category='inline-code'/&gt;更新</block>
+  <block id="7011d1effc2f982a1f137b30ee928210" category="cell">協定 LIF 的 IP 位址。*ONTAP NAS 驅動程式*：NetApp 建議指定 dataLIF。如果未提供，Trident 將從 SVM 取得 dataLIF。您可以指定一個完全限定網域名稱（FQDN）用於 NFS 掛載操作，從而建立輪詢 DNS 以在多個 dataLIF 之間進行負載平衡。初始設定後可以更改。請參閱<block ref="ac2d8c56a59b5d335127676599f45b62" category="inline-link-rx"></block>。*ONTAP SAN 驅動程式*：iSCSI 無需指定。Trident 使用 ONTAP 選擇性 LUN 對應來發現建立多路徑會話所需的 iSCSI LIF。如果明確定義了 dataLIF，則會產生警告。如果 Trident 是使用 IPv6 旗標安裝的，可以設定為使用 IPv6 位址。IPv6 位址必須用中括號定義，例如［28e8:d9fb:a825:b7bf:69a8:d02f:9e7b:3555］。</block>
+  <block id="316d0b2e5d414d5d784b53539fdf8a25" category="list-text">Trident 僅支援掛載到在 Windows 節點上執行的 Pod 的 SMB 磁碟區。詳情請參閱 <block ref="fc86597dbee216d52b5cd3ebf69f85ac" category="inline-link-macro-rx"></block>。</block>
+  <block id="74a8654521417ab6819a6646f56af88e" category="list-text">使用 Trident 搭配<block ref="24a785881ff1cdf191a2239811dc9597" category="inline-link-rx"></block>時，您可能會遇到的常見問題是租用戶金鑰和客戶端金鑰來自權限不足的應用程式註冊。有關 Trident 要求的完整清單，請參閱<block ref="66af37d4cd76f6bfef0a6d433e8dccd6" category="inline-link-macro-rx"></block>組態。</block>
 </blocks>

@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: trident-get-started/openshift-certified-operator-deploy.html 
+permalink: trident-install/openshift-certified-operator-deploy.html 
 keywords: deploy, trident, methods, operator, openshift, operatorhub, certified operator, community operator 
 summary: 如果您使用 Red Hat OpenShift，則可以使用操作員來安裝 Trident。 
 ---

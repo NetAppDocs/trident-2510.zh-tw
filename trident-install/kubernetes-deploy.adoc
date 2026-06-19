@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: trident-get-started/kubernetes-deploy.html 
+permalink: trident-install/kubernetes-deploy.html 
 keywords: deploy, Trident, methods, operator, tridentctl, helm, tanzu, vmware 
 summary: '您可以使用 Trident 運算子（手動或使用 Helm）安裝 Trident，也可以使用 `tridentctl`安裝。本主題提供了選擇適合您的安裝流程的重要資訊。' 
 ---
@@ -40,7 +40,7 @@ summary: '您可以使用 Trident 運算子（手動或使用 Helm）安裝 Trid
 
 無論採用何種安裝路徑，您都必須具備：
 
-* 對執行受支援 Kubernetes 版本且已啟用相關功能需求的受支援 Kubernetes 叢集擁有完整權限。詳情請查看 link:requirements.html["要求"]。
+* 對執行受支援 Kubernetes 版本且已啟用相關功能需求的受支援 Kubernetes 叢集擁有完整權限。詳情請查看 link:../trident-get-started/requirements.html["要求"]。
 * 可存取受支援的 NetApp 儲存系統。
 * 能夠從所有 Kubernetes 工作節點掛載磁碟區。
 * 一台安裝了 `kubectl`（或 `oc`，如果您正在使用 OpenShift）並配置用於管理您要使用的 Kubernetes 叢集的 Linux 主機。
@@ -50,19 +50,19 @@ summary: '您可以使用 Trident 運算子（手動或使用 Helm）安裝 Trid
 
 
 
-TIP: 如果您還沒有熟悉 link:../trident-get-started/intro.html["基本概念"^]，現在正是了解的好時機。
+TIP: 如果您還沒有熟悉 link:../trident-get-started/intro.html["基本概念"]，現在正是了解的好時機。
 
 
 
 == 選擇您的安裝方式
 
-選擇適合您的安裝方式。在做出決定之前，您還應該考慮 link:kubernetes-deploy.html#move-between-installation-methods["方法之間的轉換"]。
+選擇適合您的安裝方式。在做出決定之前，您還應該考慮 link:kubernetes-deploy.html#moving-between-installation-methods["方法之間的轉換"]。
 
 
 
 === 使用 Trident 運算子
 
-無論手動部署或使用 Helm，Trident operator 都是簡化安裝和動態管理 Trident 資源的絕佳方式。您甚至可以link:../trident-get-started/kubernetes-customize-deploy.html["自訂您的 Trident 操作員部署"]使用 `TridentOrchestrator`自訂資源（CR）中的屬性。
+無論手動部署或使用 Helm，Trident operator 都是簡化安裝和動態管理 Trident 資源的絕佳方式。您甚至可以link:../trident-install/kubernetes-customize-deploy.html["自訂您的 Trident 操作員部署"]使用 `TridentOrchestrator`自訂資源（CR）中的屬性。
 
 使用 Trident 運算子的優點包括：
 

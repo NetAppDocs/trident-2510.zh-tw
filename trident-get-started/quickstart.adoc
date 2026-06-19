@@ -12,7 +12,7 @@ summary: 如果您剛開始使用 Kubernetes，請使用安裝 Kubernetes 的說
 
 
 [role="lead"]
-您可以在幾個步驟內安裝 Trident 並開始管理儲存資源。開始之前，請先檢閱link:requirements.html["Trident 需求"]。
+您可以在幾個步驟內安裝 Trident 並開始管理儲存資源。開始之前，請先檢閱link:../trident-get-started/requirements.html["Trident 需求"]。
 
 
 NOTE: 有關 Docker 的資訊，請參閱 link:../trident-docker/deploy-docker.html["Trident for Docker"]。
@@ -29,7 +29,7 @@ link:../trident-use/worker-node-prep.html["準備工作節點"]
 Trident 提供多種安裝方法和模式，並針對各種環境和組織進行了最佳化。
 
 [role="quick-margin-para"]
-link:../trident-get-started/kubernetes-deploy.html["安裝 Trident"]
+link:../trident-install/kubernetes-deploy.html["安裝 Trident"]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三"] 建立後端
 [role="quick-margin-para"]

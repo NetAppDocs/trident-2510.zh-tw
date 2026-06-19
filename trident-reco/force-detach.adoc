@@ -150,7 +150,7 @@ TNR 可能處於下列幾種狀態之一：
 
 
 
-NOTE: 您也可以使用以下<<Integrating Custom Node Health Check Solutions>>章節中指定的其他方法來偵測節點故障。
+NOTE: 您也可以使用以下link:..trident-reco/force-detach.html#integrating-custom-node-health-check-solutions["整合自訂節點健康檢查解決方案"]章節中指定的其他方法來偵測節點故障。
 
 如需詳細資訊，請參閱 link:https://www.redhat.com/en/blog/node-health-check-operator["節點健康檢查 Operator"^]。
 
