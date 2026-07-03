@@ -20,7 +20,7 @@ summary: 在配置 Azure NetApp Files 後端之前，需要確保滿足以下要
 
 如果您是首次使用 Azure NetApp Files 或在新的位置使用，則需要進行一些初始設定來設定 Azure NetApp Files 並建立 NFS 磁碟區。請參閱 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes["Azure：設定 Azure NetApp Files 並建立 NFS Volume"^]。
 
-要設定和使用  https://azure.microsoft.com/en-us/services/netapp/["Azure NetApp Files"^] 後端、您需要以下元件：
+要設定和使用  https://azure.microsoft.com/en-us/products/netapp/["Azure NetApp Files"^] 後端、您需要以下元件：
 
 [NOTE]
 ====
